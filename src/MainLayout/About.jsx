@@ -4,7 +4,6 @@ import animation from '../../public/iAju03SE80.json'
 const About = () => {
     return (
         <div>
-            {/* <h1 className="text-blue-500 text-5xl text-center font-bold mt-10">ALL YOU NEED TO KNOW ABOUT US</h1> */}
             <div className="flex flex-col md:flex-row justify-between items-center">
                 <Lottie className="flex-1" animationData={animation}></Lottie>
                 <div className="flex-1">
