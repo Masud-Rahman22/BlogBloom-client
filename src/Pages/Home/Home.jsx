@@ -1,5 +1,3 @@
-
-
 import About from "../../MainLayout/About";
 import Banner from "../../MainLayout/Banner/Banner";
 import Blogging from "../../MainLayout/Blogging";
