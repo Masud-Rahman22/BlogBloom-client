@@ -1,6 +1,3 @@
-// import picture from '../../public/about us/2672335.jpg'
-// Import Swiper styles
-// import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
