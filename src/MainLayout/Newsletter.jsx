@@ -18,17 +18,17 @@ const Newsletter = () => {
         
     }
     return (
-        <div className='md:mt-32'>
-            <img className='absolute w-full h-[50vh]' src={backgroundImg} alt="" />
+        <div className='mt-14 md:mt-32'>
+            <img className='absolute w-full h-full md:h-[50vh]' src={backgroundImg} alt="" />
             <div className=' relative md:ml-96'>
             <form onSubmit={handleSubmit} className='flex flex-col'>
-            <input className="border-b-2 font-bold text-sm w-[300px] md:w-[700px] mt-10 p-2 rounded-lg" type="email" name="email" id="" placeholder="Enter Your Email" required />
-            <button className="bg-blue-500 text-white w-[100px] h-[50px] mt-10 rounded-md p-3">Subscribe</button>
+            <input className="border-b-2 font-bold text-sm w-[300px] md:w-[700px] mt-10 p-2 rounded-lg ml-28 md:ml-1" type="email" name="email" id="" placeholder="Enter Your Email" required />
+            <button className="bg-blue-500 text-white md:w-[100px] md:h-[50px] mt-10 rounded-md p-1 mx-32 md:mx-1 md:p-3">Subscribe</button>
             </form>
             </div>
-            <div className='relative md:ml-96 mt-12'>
+            <div className='relative ml-20 md:ml-96 mt-12'>
                 <h1 className='text-black text-xl mb-5'>Keep up our latest news and events.</h1>
-                <h1 className=' text-3xl'> Subscribe our <span className='text-blue-500 font-merienda'>NEWSLETTER</span></h1>
+                <h1 className='text-xl md:text-3xl'> Subscribe our <span className='text-black md:text-blue-500 font-merienda'>NEWSLETTER</span></h1>
             </div>
         </div>
     );

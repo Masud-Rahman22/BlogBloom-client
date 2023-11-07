@@ -10,7 +10,7 @@ const Wishlist = () => {
     console.log(user);
     const [wishlist, setWishlist] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:5000/wishlist?email=${user?.email}`)
+        axios.get(`http://localhost:5000/wishlist?email=${user?.email}`,{withCredentials: true})
             .then(res => {
                 console.log(res.data);
                 setWishlist(res.data)
@@ -18,7 +18,7 @@ const Wishlist = () => {
     }, [user?.email])
     console.log(wishlist);
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:ml-20 lg:my-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:ml-20 md:my-10 mt-14 md:mt-1">
             {
                 wishlist?.map(list => <WishlistCards key={list._id} list={list} wishlist={wishlist} setWishlist={setWishlist}></WishlistCards>)
             }

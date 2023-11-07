@@ -1,8 +1,9 @@
 
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
 
-const WishlistCards = ({ list,wishlist,setWishlist }) => {
+const WishlistCards = ({ list, wishlist, setWishlist }) => {
     console.log(list);
     const { title, img, shortDescription, category, _id } = list;
     const handleToDelete = (_id) => {
@@ -40,7 +41,7 @@ const WishlistCards = ({ list,wishlist,setWishlist }) => {
 
     }
     return (
-        <div className="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
+        <div className="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border mt-3 md:mt-10">
             <div className="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
                 <img
                     src={img}
@@ -57,13 +58,14 @@ const WishlistCards = ({ list,wishlist,setWishlist }) => {
                 </p>
             </div>
             <div className="p-6 pt-0 flex flex-col gap-3">
-                <button
-                    className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none w-full"
-                    type="button"
-                    data-ripple-light="true"
-                >
-                    Details
-                </button>
+                <Link to={`/blogDetails/${_id}`}>
+                    <button
+                        className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none w-full"
+                        type="button"
+                        data-ripple-light="true"
+                    >
+                        Details
+                    </button></Link>
                 <button
                     onClick={() => handleToDelete(_id)}
                     className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none w-full"

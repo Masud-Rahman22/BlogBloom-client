@@ -24,7 +24,7 @@ const Blogs = ({ blog }) => {
             })
     }
     return (
-        <div className="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
+        <div data-aos="flip-right" className="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
             <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white h-96 rounded-xl bg-clip-border">
                 <img
                     src={img}

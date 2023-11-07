@@ -51,7 +51,7 @@ const AddBlog = () => {
         })
     }
     useEffect(() => {
-        axios.get('http://localhost:5000/blogs/categories')
+        axios.get('http://localhost:5000/blogs/categories',{withCredentials: true})
             .then(res => {
                 setCategory(res.data)
             })

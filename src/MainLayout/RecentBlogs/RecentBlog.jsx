@@ -1,35 +1,36 @@
-
 import axios from "axios";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
-
+import { motion } from "framer-motion"
 
 const RecentBlog = ({ blog }) => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     // const userEmail = {email: user?.email}
-    const { title, img, shortDescription, category, _id} = blog;
+    const { title, img, shortDescription, category, _id } = blog;
     const email = user?.email
     const detailedInfo = {
-        title, img, shortDescription, category,email
+        title, img, shortDescription, category, email
     }
-    const handleWishlist = e =>{
+    const handleWishlist = e => {
         e.preventDefault()
-        axios.post('http://localhost:5000/wishlist',detailedInfo)
-        .then(res=>{
-            console.log(res.data);
-            if(res.data.insertedId){
-                swal("Done", "You added this blog to your wishlist", "success");
-            }
-        })
+        axios.post('http://localhost:5000/wishlist', detailedInfo)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    swal("Done", "You added this blog to your wishlist", "success");
+                }
+            })
     }
     return (
-        <div className="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
+        <motion.div whileHover={{ scale: 0.9 }} className="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
             <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white h-96 rounded-xl bg-clip-border">
                 <img
-                    src={img}
-                    className="object-cover w-full h-full"
+                    src={img || <Skeleton></Skeleton>}
+                    className="object-cover w-full h-full" 
                 />
             </div>
             <div className="p-6">
@@ -47,10 +48,18 @@ const RecentBlog = ({ blog }) => {
 
             </div>
             <div className="p-6 pt-0 flex justify-around items-center">
-                <Link to={`/blogDetails/${_id}`}><button className="bg-blue-500 text-white p-3 rounded-md">Details</button></Link>
-                <button className="bg-blue-500 text-white p-3 rounded-md" onClick={handleWishlist}>wishlist</button>
-        </div>
-        </div >
+                <Link to={`/blogDetails/${_id}`}><motion.button className="bg-blue-500 text-white p-3 rounded-md" whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 1 },
+                }}
+                    whileTap={{ scale: 0.9 }} >Details</motion.button></Link>
+                <motion.button whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 1 },
+                }}
+                    whileTap={{ scale: 0.9 }} className="bg-blue-500 text-white p-3 rounded-md" onClick={handleWishlist}>wishlist</motion.button>
+            </div>
+        </motion.div >
     );
 };
 

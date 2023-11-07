@@ -1,12 +1,59 @@
 import { useContext } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { Label, Textarea } from 'flowbite-react';
+import axios from "axios";
+import swal from "sweetalert";
+import { useEffect } from "react";
+import { useState } from "react";
+import { motion } from "framer-motion"
 
 const BlogDetails = () => {
-    const details = useLoaderData();
-    const {user} = useContext(AuthContext)
+    // const details = useLoaderData();
+    const [comments, setComments] = useState([]);
+    const [details, setDetails] = useState([])
+    const { user } = useContext(AuthContext)
+    const { id } = useParams()
     const userEmail = user?.email
-    const { title, img, shortDescription, longDescription, category,email, _id } = details;
+    const name = user?.displayName
+    const userPhoto = user?.photoURL
+    const { title, img, shortDescription, longDescription, category, email, _id } = details;
+    useEffect(() => {
+        axios.get(`http://localhost:5000/blogDetails/${id}`)
+            .then(res => {
+                setDetails(res.data)
+            })
+    }, [id])
+    console.log(_id);
+    const handleSubmit = e => {
+        e.preventDefault();
+        const form = e.target;
+        const text = form.textArea.value;
+        const blogsId = _id
+        const commentsInfo = {
+            text,
+            userPhoto,
+            name,
+            blogsId
+        }
+        console.log(commentsInfo);
+        axios.post('http://localhost:5000/comments', commentsInfo)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    swal("Great", "Your comment is submitted", "success");
+                }
+            })
+
+    }
+    useEffect(() => {
+        axios.get(`http://localhost:5000/comments/${_id}`)
+            .then(res => {
+                console.log(res.data);
+                setComments(res.data)
+            })
+    }, [_id])
+    console.log(comments)
     return (
         <div>
             <div className="relative flex w-full max-w-[80rem] flex-col md:flex-row rounded-xl border-2 bg-white mx-auto my-10">
@@ -26,20 +73,39 @@ const BlogDetails = () => {
                     </h4>
                     <div className="flex flex-col gap-2 mt-5">
                         <h2 className="text-center text-xl font-semibold text-blue-500 underline">Short Description</h2>
-                    <p className="border-2 text-center block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-black">
-                        {shortDescription}
-                    </p>
+                        <p className="border-2 text-center block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-black">
+                            {shortDescription}
+                        </p>
                     </div>
                     <div className="flex flex-col gap-2">
-                    <h2 className="text-center text-xl font-semibold text-blue-500 underline">Long Description</h2>
-                    <p className="border-2 text-center block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-black">
-                        {longDescription}
-                    </p>
+                        <h2 className="text-center text-xl font-semibold text-blue-500 underline">Long Description</h2>
+                        <p className="border-2 text-center block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-black">
+                            {longDescription}
+                        </p>
                     </div>
                     {
-                        email === userEmail && <Link to={`/updates/${_id}`}><button className="bg-blue-500 text-white p-2 rounded-md w-full">Update</button></Link>
+                        email === userEmail && <Link to={`/updates/${_id}`}><motion.button whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.8 }}
+                        style={{ x: 100 }} className="bg-blue-500 text-white p-2 md:ml-28 w-1/2 rounded-md">Update</motion.button></Link>
                     }
+                    <form onSubmit={handleSubmit}>
+                        <div className="max-w-full">
+                            <div className="mb-2 block">
+                                <Label htmlFor="comment" value="Your message" />
+                            </div>
+                            <Textarea name="textArea" id="comment" placeholder="Leave a comment..." required rows={4} />
+                            <motion.button whileHover={{ scale: 1.2 }}
+                                whileTap={{ scale: 0.8 }}
+                                style={{ x: 100 }} className="w-1/2 text-center md:ml-28 bg-blue-500 text-white rounded-lg p-2 mt-5">Submit</motion.button>
+                        </div>
+                    </form>
+
                 </div>
+            </div>
+            <div className="border-2 w-1/2">
+                {/* {
+                    filteredComments.map()
+                } */}
             </div>
         </div>
     );

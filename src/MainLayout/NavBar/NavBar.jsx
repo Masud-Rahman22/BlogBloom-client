@@ -8,7 +8,7 @@ const NavBar = () => {
         <li className="text-black lg:mr-2"><NavLink
             to="/"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
+                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-1 md:p-3 rounded-lg" : ""
             }
         >
             Home
@@ -16,7 +16,7 @@ const NavBar = () => {
         <li className="text-black lg:mr-2"><NavLink
             to="/addBlog"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
+                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-1 md:p-3 rounded-lg" : ""
             }
         >
             Add Blog
@@ -24,7 +24,7 @@ const NavBar = () => {
         <li className="text-black lg:mr-2"><NavLink
             to="/allBlogs"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
+                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-1 md:p-3 rounded-lg" : ""
             }
         >
             All Blogs
@@ -32,7 +32,7 @@ const NavBar = () => {
         <li className="text-black lg:mr-2"><NavLink
             to="/featuredBlogs"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
+                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-1 md:p-3 rounded-lg" : ""
             }
         >
             Featured Blogs
@@ -40,7 +40,7 @@ const NavBar = () => {
         <li className="text-black lg:mr-2"><NavLink
             to="/wishlist"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
+                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-1 md:p-3 rounded-lg" : ""
             }
         >
             Wishlist
@@ -52,7 +52,7 @@ const NavBar = () => {
                     <li className="text-black lg:mr-5"><NavLink
                         to="/login"
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
+                            isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-1 md:p-3 rounded-lg" : ""
                         }
                     >
                         Login
@@ -60,7 +60,7 @@ const NavBar = () => {
                     <li className="text-black"><NavLink
                         to="/register"
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
+                            isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-1 md:p-3 rounded-lg" : ""
                         }
                     >
                         Register

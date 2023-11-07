@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRef } from "react";
 
-
 const AllBlogs = () => {
     const allBlogs = useLoaderData();
     const title = useRef()
@@ -39,6 +38,7 @@ const AllBlogs = () => {
             })
     }, [])
     console.log(category);
+    console.log(array);
     return (
         <div>
             <div className="flex justify-between items-center">
