@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { Button, Navbar } from 'flowbite-react';
 const NavBar = () => {
+    const { Logout, user } = useContext(AuthContext)
     const Links = <>
         <li className="text-black lg:mr-2"><NavLink
             to="/"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold bg-blue-500" : ""
+                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
             }
         >
             Home
@@ -12,7 +16,7 @@ const NavBar = () => {
         <li className="text-black lg:mr-2"><NavLink
             to="/addBlog"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold bg-blue-500" : ""
+                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
             }
         >
             Add Blog
@@ -20,7 +24,7 @@ const NavBar = () => {
         <li className="text-black lg:mr-2"><NavLink
             to="/allBlogs"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold bg-blue-500" : ""
+                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
             }
         >
             All Blogs
@@ -28,7 +32,7 @@ const NavBar = () => {
         <li className="text-black lg:mr-2"><NavLink
             to="/featuredBlogs"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold bg-blue-500" : ""
+                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
             }
         >
             Featured Blogs
@@ -36,51 +40,70 @@ const NavBar = () => {
         <li className="text-black lg:mr-2"><NavLink
             to="/wishlist"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold bg-blue-500" : ""
+                isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
             }
         >
             Wishlist
         </NavLink></li>
-        <li className="text-black lg:mr-2"><NavLink
-            to="/login"
-            className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold bg-blue-500" : ""
-            }
-        >
-            Login
-        </NavLink></li>
-        <li className="text-black"><NavLink
-            to="/register"
-            className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold bg-blue-500" : ""
-            }
-        >
-            Register
-        </NavLink></li>
-    </>
-    return (
-        <div className="navbar bg-base-100">
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                    </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        {Links}
-                    </ul>
+        {
+            user ? ""
+                :
+                <div className="flex">
+                    <li className="text-black lg:mr-5"><NavLink
+                        to="/login"
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
+                        }
+                    >
+                        Login
+                    </NavLink></li>
+                    <li className="text-black"><NavLink
+                        to="/register"
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "font-bold bg-blue-500 p-3 rounded-lg" : ""
+                        }
+                    >
+                        Register
+                    </NavLink></li>
                 </div>
-                <img className="w-[110px] h-[110px]" src="/public/logo.png" alt="" />
+        }
+    </>
+    const handleToLogout = () => {
+        Logout()
+            .then()
+            .catch()
+    }
+    return (
+        <Navbar fluid rounded>
+            <Navbar.Brand href="https://flowbite-react.com">
+                <img className="w-[110px] h-[110px] -mt-5" src="/public/logo.png" alt="" />
+            </Navbar.Brand>
+            <div className=" flex md:order-2">
+                {
+                    user && <div className="flex items-center gap-3">
+                        <p>{user.displayName}</p>
+                        <div className="w-10 rounded-full navbar-end">
+                            <img className="rounded-full" src={user?.photoURL} />
+                        </div>
+                        <Button onClick={handleToLogout} className="btn bg-blue-500 text-white border-none">Logout</Button>
+                    </div>
+                }
+                <Navbar.Toggle />
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    {Links}
-                </ul>
-            </div>
-            <div className="navbar-end">
-                <a className="btn">Log Out</a>
-            </div>
-        </div>
+            <Navbar.Collapse>
+                {Links}
+            </Navbar.Collapse>
+        </Navbar>
     );
-};
+}
 
 export default NavBar;
+// {
+//     user && <div className="navbar-end gap-2">
+//         <p>{user.displayName}</p>
+//         <div className="w-10 rounded-full navbar-end">
+//             <img className="rounded-full" src={user?.photoURL} />
+//         </div>
+//         <button onClick={handleToLogout} className="btn bg-blue-500 text-white border-none">Logout</button>
+//     </div>
+// }

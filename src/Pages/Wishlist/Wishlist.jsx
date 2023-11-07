@@ -1,10 +1,29 @@
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import axios from "axios";
+import WishlistCards from "./WishlistCards";
+
 
 
 const Wishlist = () => {
+    const { user } = useContext(AuthContext);
+    console.log(user);
+    const [wishlist, setWishlist] = useState([])
+    useEffect(() => {
+        axios.get(`http://localhost:5000/wishlist?email=${user?.email}`)
+            .then(res => {
+                console.log(res.data);
+                setWishlist(res.data)
+            })
+    }, [user?.email])
+    console.log(wishlist);
     return (
-        <div>
-            
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:ml-20 lg:my-10">
+            {
+                wishlist?.map(list => <WishlistCards key={list._id} list={list} wishlist={wishlist} setWishlist={setWishlist}></WishlistCards>)
+            }
         </div>
+
     );
 };
 

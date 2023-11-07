@@ -11,7 +11,7 @@ import pic3 from '../../public/swiper images/517071-PIXH41-841.jpg'
 import pic4 from '../../public/swiper images/524627-PIWZED-672.jpg'
 const Blogging = () => {
     return (
-        <div className=''>
+        <div className='mt-20'>
             <div className='flex flex-col items-center justify-center'>
                 <h1 className='text-blue-500 text-3xl md:text-5xl font-semibold font-merienda mb-5'>Explore Blogging</h1>
                 <p className='text-black font-extralight text-sm md:text-lg mt-5  lg:w-3/4 text-center mb-5'>Blogging is a dynamic and versatile form of online content creation that enables individuals and businesses to connect with a global audience. Bloggers, the creative minds behind these digital journals, regularly craft and publish blog posts, each covering a specific topic or theme that appeals to their target audience. These posts encompass a diverse range of content types, from informative articles and product reviews to personal anecdotes and instructional guides. Bloggers often focus on a particular niche, allowing them to establish authority and credibility within their chosen field, whether it is fashion, technology, travel, or any other area of interest.</p>

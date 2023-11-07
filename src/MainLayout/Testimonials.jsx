@@ -6,7 +6,7 @@ import pic5 from '../../public/customer Images/portrait-serious-young-businessma
 import Marquee from "react-fast-marquee";
 const Testimonials = () => {
     return (
-        <div className="lg:mt-32">
+        <div className="lg:mt-44">
             <div className="flex flex-col items-center justify-center">
                 <h1 className="text-blue-500 text-3xl md:text-5xl font-semibold font-merienda mt-5">What Our Readers Say</h1>
                 <p className="text-black font-extralight text-sm md:text-lg mt-5  lg:w-3/4 text-center">I can not thank the creators of this blog enough. It is not just informative; it is a source of inspiration. I have implemented some of the ideas from the blog into my own life, and the results have been amazing.</p>
