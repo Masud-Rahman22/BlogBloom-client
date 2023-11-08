@@ -10,7 +10,6 @@ import { motion } from "framer-motion"
 import Comments from "./Comments";
 
 const BlogDetails = () => {
-    // const details = useLoaderData();
     const [comments, setComments] = useState([]);
     const [details, setDetails] = useState([])
     const { user } = useContext(AuthContext)
@@ -46,13 +45,6 @@ const BlogDetails = () => {
                     swal("Great", "Your comment is submitted", "success");
                 }
             })
-        // axios.post('https://blog-bloom-server.vercel.app/comment', commentsInfo)
-        //     .then(res => {
-        //         console.log(res.data);
-        //         if (res.data.insertedId) {
-        //             swal("Great", "Your comment is submitted", "success");
-        //         }
-        //     })
 
     }
     useEffect(() => {
