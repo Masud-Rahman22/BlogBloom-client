@@ -17,7 +17,6 @@ const AddBlog = () => {
         const email = user?.email
         const photo = user?.photoURL
         // const currentHours = currentDate.getHours();
-        // const currentMinutes = currentDate.getMinutes();
         const currentDate = date.toLocaleDateString()
         const currentTime = date.toLocaleTimeString()
         console.log(currentTime);
