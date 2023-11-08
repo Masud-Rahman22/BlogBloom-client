@@ -18,7 +18,6 @@ const Banner = () => {
                                 transition: { duration: 1 },
                             }}
                                 whileTap={{ scale: 0.9 }} className='p-3 bg-blue-400 text-white rounded-lg'>Explore Articles</motion.button>
-                            {/* <Button.Group outline><Button gradientMonochrome="info" className="rounded-lg font-merienda">Explore Articles</Button></Button.Group> */}
                         </div>
                     </motion.div>
                 </div>

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Button, Navbar } from 'flowbite-react';
+import logo from '../../../public/about us/logo.png'
 const NavBar = () => {
     const { Logout, user } = useContext(AuthContext)
     const Links = <>
@@ -76,7 +77,7 @@ const NavBar = () => {
     return (
         <Navbar fluid rounded>
             <Navbar.Brand href="https://flowbite-react.com">
-                <img className="w-[110px] h-[110px] -mt-5" src="/public/logo.png" alt="" />
+                <img className="w-[110px] h-[110px] -mt-5" src={logo} alt="" />
             </Navbar.Brand>
             <div className=" flex md:order-2">
                 {

@@ -6,6 +6,7 @@ import swal from "sweetalert";
 const WishlistCards = ({ list, wishlist, setWishlist }) => {
     console.log(list);
     const { title, img, shortDescription, category, _id } = list;
+    console.log(_id);
     const handleToDelete = (_id) => {
         swal({
             title: "Are you sure?",

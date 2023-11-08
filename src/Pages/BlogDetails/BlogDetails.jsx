@@ -10,7 +10,7 @@ import { motion } from "framer-motion"
 
 const BlogDetails = () => {
     // const details = useLoaderData();
-    const [comments, setComments] = useState([]);
+    // const [comments, setComments] = useState([]);
     const [details, setDetails] = useState([])
     const { user } = useContext(AuthContext)
     const { id } = useParams()
@@ -24,7 +24,8 @@ const BlogDetails = () => {
                 setDetails(res.data)
             })
     }, [id])
-    console.log(_id);
+    // problem here
+    console.log(_id); 
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
@@ -46,14 +47,14 @@ const BlogDetails = () => {
             })
 
     }
-    useEffect(() => {
-        axios.get(`http://localhost:5000/comments/${_id}`)
-            .then(res => {
-                console.log(res.data);
-                setComments(res.data)
-            })
-    }, [_id])
-    console.log(comments)
+    // useEffect(() => {
+    //     axios.get(`http://localhost:5000/comments/${_id}`)
+    //         .then(res => {
+    //             console.log(res.data);
+    //             setComments(res.data)
+    //         })
+    // }, [_id])
+    // console.log(comments)
     return (
         <div>
             <div className="relative flex w-full max-w-[80rem] flex-col md:flex-row rounded-xl border-2 bg-white mx-auto my-10">
