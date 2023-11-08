@@ -13,6 +13,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import BlogDetails from "../Pages/BlogDetails/BlogDetails";
 import UpdateBlog from "../Pages/UpdateBlog/UpdateBlog";
+import WishlistBlogDetails from "../Pages/Wishlist/WishlistBlogDetails";
 
 
 const router = createBrowserRouter([
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: ()=> fetch('http://localhost:5000/blogs/sort')
+                loader: ()=> fetch('https://blog-bloom-server.vercel.app/blogs/sort')
             },
             {
                 path: "/addBlog",
@@ -33,12 +34,12 @@ const router = createBrowserRouter([
             {
                 path: "/updates/:id",
                 element: <PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/updates/${params.id}`)
+                loader: ({params})=> fetch(`https://blog-bloom-server.vercel.app/updates/${params.id}`)
             },
             {
                 path: "/allBlogs",
                 element: <AllBlogs></AllBlogs>,
-                loader: ()=> fetch('http://localhost:5000/blogs')
+                loader: ()=> fetch('https://blog-bloom-server.vercel.app/blogs')
             },
             {
                 path: "/featuredBlogs",
@@ -51,7 +52,11 @@ const router = createBrowserRouter([
             {
                 path: '/blogDetails/:id',
                 element: <PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
-                // loader: ({params})=> fetch(`http://localhost:5000/blogDetails/${params.id}`)
+                // loader: ({params})=> fetch(`https://blog-bloom-server.vercel.app/blogDetails/${params.id}`)
+            },
+            {
+                path: '/wishlistBlogDetails/:id',
+                element: <PrivateRoute><WishlistBlogDetails></WishlistBlogDetails></PrivateRoute>
             },
             {
                 path: "/login",

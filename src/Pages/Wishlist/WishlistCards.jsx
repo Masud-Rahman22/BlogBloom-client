@@ -17,7 +17,7 @@ const WishlistCards = ({ list, wishlist, setWishlist }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/wishlist/${_id}`, {
+                    fetch(`https://blog-bloom-server.vercel.app/wishlist/${_id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json'
@@ -49,7 +49,7 @@ const WishlistCards = ({ list, wishlist, setWishlist }) => {
                     alt="img-blur-shadow"
                 />
             </div>
-            <div className="p-6">
+            <div className="p-6 flex-grow">
                 <h1 className="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 text-blue-500">{category}</h1>
                 <h5 className="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
                     {title}
@@ -59,7 +59,7 @@ const WishlistCards = ({ list, wishlist, setWishlist }) => {
                 </p>
             </div>
             <div className="p-6 pt-0 flex flex-col gap-3">
-                <Link to={`/blogDetails/${_id}`}>
+                <Link to={`/wishlistBlogDetails/${_id}`}>
                     <button
                         className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none w-full"
                         type="button"

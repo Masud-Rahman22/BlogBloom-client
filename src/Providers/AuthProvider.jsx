@@ -33,18 +33,12 @@ const AuthProvider = ({ children }) => {
             setLoading(false)
             const loggedUser = { email: userEmail }
 
-            if (currentUser !== null) {
-                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+            if (currentUser) {
+                axios.post('https://blog-bloom-server.vercel.app/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                     })
             }
-            // else{
-            //     axiosSecure.post('/logout',loggedUser)
-            //     .then(res=>{
-            //         console.log(res.data);
-            //     })
-            // }
         })
         return () => {
             unsubscribe()

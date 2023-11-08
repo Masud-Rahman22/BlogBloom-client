@@ -34,7 +34,7 @@ const AddBlog = () => {
         console.log(blogInfo);
         form.reset()
 
-        axios.post('http://localhost:5000/blogs',blogInfo)
+        axios.post('https://blog-bloom-server.vercel.app/blogs',blogInfo)
         .then(res =>{
             console.log(res.data);
             if(res.data.insertedId){
@@ -42,13 +42,13 @@ const AddBlog = () => {
             }
         })
 
-        axios.post('http://localhost:5000/blogs/categories',blogCategory)
+        axios.post('https://blog-bloom-server.vercel.app/blogs/categories',blogCategory)
         .then(res=>{
             console.log(res.data);
         })
     }
     useEffect(() => {
-        axios.get('http://localhost:5000/blogs/categories',{withCredentials: true})
+        axios.get('https://blog-bloom-server.vercel.app/blogs/categories',{withCredentials: true})
             .then(res => {
                 setCategory(res.data)
             })

@@ -8,14 +8,14 @@ import { Link } from "react-router-dom";
 
 const Blogs = ({ blog }) => {
     const { user } = useContext(AuthContext)
-    const { title, img, category, shortDescription, _id } = blog;
+    const { title, img, category, shortDescription, longDescription , _id } = blog;
     const email = user?.email
     const detailedInfo = {
-        title, img, shortDescription, category, email
+        title, img, shortDescription, longDescription, category, email
     }
     const handleWishlist = e => {
         e.preventDefault()
-        axios.post('http://localhost:5000/wishlist', detailedInfo)
+        axios.post('https://blog-bloom-server.vercel.app/wishlist', detailedInfo)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {

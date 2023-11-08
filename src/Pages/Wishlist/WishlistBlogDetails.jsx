@@ -1,29 +1,27 @@
+import axios from "axios";
 import { useContext } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { Label, Textarea } from 'flowbite-react';
-import axios from "axios";
 import swal from "sweetalert";
-import { useEffect } from "react";
-import { useState } from "react";
 import { motion } from "framer-motion"
-import Comments from "./Comments";
+import Comments from "../BlogDetails/Comments";
+import { Label, Textarea } from 'flowbite-react';
 
-const BlogDetails = () => {
-    // const details = useLoaderData();
-    const [comments, setComments] = useState([]);
-    const [details, setDetails] = useState([])
-    const { user } = useContext(AuthContext)
+const WishlistBlogDetails = () => {
     const { id } = useParams()
+    const [details, setDetails] = useState({})
+    const [comments, setComments] = useState([]);
+    const { user } = useContext(AuthContext)
     useEffect(() => {
-        axios.get(`https://blog-bloom-server.vercel.app/blogDetails/${id}`)
+        axios.get(`https://blog-bloom-server.vercel.app/wishlistBlogDetails/${id}`)
             .then(res => {
                 setDetails(res.data)
             })
     }, [id])
-    const { title, img, shortDescription, longDescription, category, email, _id } = details;
-    // problem here
-    console.log(_id);
+    console.log(details);
+    const {img,category,title,longDescription,shortDescription,_id,email} = details;
     const userEmail = user?.email
     const name = user?.displayName
     const userPhoto = user?.photoURL
@@ -39,14 +37,14 @@ const BlogDetails = () => {
             blogsId
         }
         console.log(commentsInfo);
-        axios.post('https://blog-bloom-server.vercel.app/comments', commentsInfo)
+        axios.post('https://blog-bloom-server.vercel.app/comment', commentsInfo)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
                     swal("Great", "Your comment is submitted", "success");
                 }
             })
-        // axios.post('https://blog-bloom-server.vercel.app/comment', commentsInfo)
+        // axios.post('https://blog-bloom-server.vercel.app/comments', commentsInfo)
         //     .then(res => {
         //         console.log(res.data);
         //         if (res.data.insertedId) {
@@ -56,7 +54,7 @@ const BlogDetails = () => {
 
     }
     useEffect(() => {
-        axios.get(`https://blog-bloom-server.vercel.app/comments/${_id}`)
+        axios.get(`https://blog-bloom-server.vercel.app/comment/${_id}`)
             .then(res => {
                 console.log(res.data);
                 setComments(res.data)
@@ -100,27 +98,26 @@ const BlogDetails = () => {
                     <form onSubmit={handleSubmit}>
                         <div className="max-w-full">
                             {
-                                userEmail !== email ? <div className="mb-2 block">
+                                userEmail === email ? <div className="mb-2 block">
                                     <Label htmlFor="comment" value="Your message" />
                                 </div>
-                                :
-                                ''
+                                    :
+                                    ''
                             }
                             {
-                                userEmail !== email ? <Textarea name="textArea" id="comment" placeholder="Leave a comment..." required rows={4} />
+                                userEmail === email ? <Textarea name="textArea" id="comment" placeholder="Leave a comment..." required rows={4} />
                                     :
                                     <p className="text-xl text-black font-semibold text-center md:ml-12 mt-5">Sorry you can not comment on your own blog</p>
                             }
                             {
-                                userEmail !== email ? <motion.button whileHover={{ scale: 1.2 }}
-                                whileTap={{ scale: 0.8 }}
-                                style={{ x: 100 }} className="w-1/2 text-center md:ml-28 bg-blue-500 text-white rounded-lg p-2 mt-5">Submit</motion.button>
-                                :
-                                ''
+                                userEmail === email ? <motion.button whileHover={{ scale: 1.2 }}
+                                    whileTap={{ scale: 0.8 }}
+                                    style={{ x: 100 }} className="w-1/2 text-center md:ml-28 bg-blue-500 text-white rounded-lg p-2 mt-5">Submit</motion.button>
+                                    :
+                                    ''
                             }
                         </div>
                     </form>
-
                 </div>
             </div>
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-5 md:ml-10">
@@ -130,6 +127,6 @@ const BlogDetails = () => {
             </div>
         </div>
     );
-}
+};
 
-export default BlogDetails;
+export default WishlistBlogDetails;

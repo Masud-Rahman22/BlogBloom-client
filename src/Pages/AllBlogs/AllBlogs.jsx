@@ -24,7 +24,7 @@ const AllBlogs = () => {
             console.log(array);
         }
         else {
-            axios.get(`http://localhost:5000/blogs?category=${filter}`)
+            axios.get(`https://blog-bloom-server.vercel.app/blogs?category=${filter}`)
                 .then(res => {
                     console.log(res.data);
                     setArray(res.data)
@@ -32,7 +32,7 @@ const AllBlogs = () => {
         }
     }
     useEffect(() => {
-        axios.get('http://localhost:5000/blogs/categories')
+        axios.get('https://blog-bloom-server.vercel.app/blogs/categories')
             .then(res => {
                 setCategory(res.data)
             })
