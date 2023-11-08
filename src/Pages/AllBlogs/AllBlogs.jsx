@@ -46,11 +46,6 @@ const AllBlogs = () => {
                     <input ref={title} className="border-b-2 font-bold text-sm w-[100px] md:w-[200px] h-14 mt-10 p-2 rounded-lg" type="email" name="title" id="" placeholder="Enter Title" required />
                     <button onClick={handleSearch} className="bg-blue-500 text-white w-[100px] h-[55px] mt-10 rounded-md p-3">Search</button>
                 </div>
-                {/* <div className="form-control flex justify-end gap-3 items-center mr-10">
-                    <label className="label">
-                        <span className="label-text">Category</span>
-                    </label>
-                </div> */}
                 <div className="md:mr-10">
                     <select onClick={handleFilter} name="filter" id="">
                         <option value="default">Default</option>
