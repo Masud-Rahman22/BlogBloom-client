@@ -6,7 +6,6 @@ import DataTable from 'react-data-table-component';
 
 const FeaturedBlogs = () => {
     const [blogs, setBlogs] = useState([])
-    // const {user} = useContext(AuthContext)
     useEffect(() => {
         axios.get('http://localhost:5000/blogs')
             .then(res => {
