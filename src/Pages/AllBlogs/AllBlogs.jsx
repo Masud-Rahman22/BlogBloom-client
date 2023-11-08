@@ -50,13 +50,6 @@ const AllBlogs = () => {
                     <label className="label">
                         <span className="label-text">Category</span>
                     </label>
-                    <select
-                        className="input input-bordered"
-                        onChange={(e) => setCategories(e.target.value)}
-                    >
-                        <option disabled selected>Choose one</option>
-                        {categories?.map((item) => (<option key={item._id} value={item.category}>{item.category}</option>))}
-                    </select>
                 </div> */}
                 <div className="md:mr-10">
                     <select onClick={handleFilter} name="filter" id="">
