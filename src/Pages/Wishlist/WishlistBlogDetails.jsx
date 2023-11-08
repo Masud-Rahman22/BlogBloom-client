@@ -91,7 +91,7 @@ const WishlistBlogDetails = () => {
                         </p>
                     </div>
                     {
-                        email === userEmail && <Link to={`/updates/${_id}`}><motion.button whileHover={{ scale: 1.2 }}
+                        email !== userEmail && <Link to={`/updates/${_id}`}><motion.button whileHover={{ scale: 1.2 }}
                             whileTap={{ scale: 0.8 }}
                             style={{ x: 100 }} className="bg-blue-500 text-white p-2 md:ml-28 w-1/2 rounded-md">Update</motion.button></Link>
                     }
