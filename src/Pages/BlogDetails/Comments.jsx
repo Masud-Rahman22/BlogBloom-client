@@ -3,7 +3,7 @@ import { Card } from 'flowbite-react';
 const Comments = ({ comment }) => {
     const { name, userPhoto, text } = comment;
     return (
-        <Card className="max-w-sm">
+        <Card className="max-w-xs">
         <div className="flex flex-col items-center pb-10">
             <img
                 alt="Bonnie image"

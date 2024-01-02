@@ -23,7 +23,7 @@ const UpdateBlog = () => {
             shortDescription,
             longDescription
         }
-        axios.put(`https://blog-bloom-server.vercel.app/updates/${_id}`,updatedInfo)
+        axios.put(`http://localhost:5000/updates/${_id}`,updatedInfo)
         .then(res =>{
             console.log(res.data);
             if(res.data.modifiedCount > 0){
@@ -32,7 +32,7 @@ const UpdateBlog = () => {
         })
     }
     useEffect(() => {
-        axios.get('https://blog-bloom-server.vercel.app/blogs/categories')
+        axios.get('http://localhost:5000/blogs/categories')
             .then(res => {
                 setCategories(res.data)
             })

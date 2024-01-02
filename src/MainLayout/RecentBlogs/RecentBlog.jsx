@@ -17,7 +17,7 @@ const RecentBlog = ({ blog }) => {
     }
     const handleWishlist = e => {
         e.preventDefault()
-        axios.post('https://blog-bloom-server.vercel.app/wishlist', detailedInfo)
+        axios.post('http://localhost:5000/wishlist', detailedInfo)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {

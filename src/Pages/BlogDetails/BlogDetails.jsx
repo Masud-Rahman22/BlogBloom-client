@@ -15,7 +15,7 @@ const BlogDetails = () => {
     const { user } = useContext(AuthContext)
     const { id } = useParams()
     useEffect(() => {
-        axios.get(`https://blog-bloom-server.vercel.app/blogDetails/${id}`)
+        axios.get(`http://localhost:5000/blogDetails/${id}`)
             .then(res => {
                 setDetails(res.data)
             })
@@ -38,7 +38,7 @@ const BlogDetails = () => {
             blogsId
         }
         console.log(commentsInfo);
-        axios.post('https://blog-bloom-server.vercel.app/comments', commentsInfo)
+        axios.post('http://localhost:5000/comments', commentsInfo)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
@@ -48,7 +48,7 @@ const BlogDetails = () => {
 
     }
     useEffect(() => {
-        axios.get(`https://blog-bloom-server.vercel.app/comments/${_id}`)
+        axios.get(`http://localhost:5000/comments/${_id}`)
             .then(res => {
                 console.log(res.data);
                 setComments(res.data)
@@ -115,7 +115,7 @@ const BlogDetails = () => {
 
                 </div>
             </div>
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-5 md:ml-10">
+            <div className="w-4/5 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
                     comments.map(comment => <Comments comment={comment} key={comment._id}></Comments>)
                 }

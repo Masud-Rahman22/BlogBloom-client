@@ -8,7 +8,7 @@ const Newsletter = () => {
         const form = new FormData(e.currentTarget)
         const email = form.get('email')
         const userEmail = {email}
-        axios.post('https://blog-bloom-server.vercel.app/newsletter',userEmail)
+        axios.post('http://localhost:5000/newsletter',userEmail)
         .then(res=>{
             console.log(res.data);
             if(res.data.insertedId){
