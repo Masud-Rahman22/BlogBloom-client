@@ -17,7 +17,7 @@ const WishlistCards = ({ list, wishlist, setWishlist }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/wishlist/${_id}`, {
+                    fetch(`https://blog-bloom-server.vercel.app/wishlist/${_id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json'

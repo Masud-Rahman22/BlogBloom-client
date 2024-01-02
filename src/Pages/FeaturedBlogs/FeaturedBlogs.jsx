@@ -5,7 +5,7 @@ import DataTable from 'react-data-table-component';
 const FeaturedBlogs = () => {
     const [blogs, setBlogs] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:5000/blogs')
+        axios.get('https://blog-bloom-server.vercel.app/blogs')
             .then(res => {
                 setBlogs(res.data)
             })

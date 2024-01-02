@@ -15,7 +15,7 @@ const WishlistBlogDetails = () => {
     const [comments, setComments] = useState([]);
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        axios.get(`http://localhost:5000/wishlistBlogDetails/${id}`)
+        axios.get(`https://blog-bloom-server.vercel.app/wishlistBlogDetails/${id}`)
             .then(res => {
                 setDetails(res.data)
             })
@@ -37,14 +37,14 @@ const WishlistBlogDetails = () => {
             blogsId
         }
         console.log(commentsInfo);
-        axios.post('http://localhost:5000/comment', commentsInfo)
+        axios.post('https://blog-bloom-server.vercel.app/comment', commentsInfo)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
                     swal("Great", "Your comment is submitted", "success");
                 }
             })
-        // axios.post('http://localhost:5000/comments', commentsInfo)
+        // axios.post('https://blog-bloom-server.vercel.app/comments', commentsInfo)
         //     .then(res => {
         //         console.log(res.data);
         //         if (res.data.insertedId) {
@@ -54,7 +54,7 @@ const WishlistBlogDetails = () => {
 
     }
     useEffect(() => {
-        axios.get(`http://localhost:5000/comment/${_id}`)
+        axios.get(`https://blog-bloom-server.vercel.app/comment/${_id}`)
             .then(res => {
                 console.log(res.data);
                 setComments(res.data)
