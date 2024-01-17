@@ -10,7 +10,7 @@ const Wishlist = () => {
     console.log(user);
     const [wishlist, setWishlist] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:5000/wishlist?email=${user?.email}`)
+        axios.get(`https://blog-bloom-server.vercel.app/wishlist?email=${user?.email}`)
             .then(res => {
                 console.log(res.data);
                 setWishlist(res.data)
