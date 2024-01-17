@@ -34,7 +34,7 @@ const AuthProvider = ({ children }) => {
             const loggedUser = { email: userEmail }
 
             if (currentUser) {
-                axios.post('https://blog-bloom-server.vercel.app/jwt', loggedUser, { withCredentials: true })
+                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                     })

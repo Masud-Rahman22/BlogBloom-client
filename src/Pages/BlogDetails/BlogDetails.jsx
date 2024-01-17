@@ -9,13 +9,14 @@ import { useState } from "react";
 import { motion } from "framer-motion"
 import Comments from "./Comments";
 
+
 const BlogDetails = () => {
     const [comments, setComments] = useState([]);
     const [details, setDetails] = useState([])
     const { user } = useContext(AuthContext)
     const { id } = useParams()
     useEffect(() => {
-        axios.get(`https://blog-bloom-server.vercel.app/blogDetails/${id}`)
+        axios.get(`http://localhost:5000/blogDetails/${id}`)
             .then(res => {
                 setDetails(res.data)
             })
@@ -38,7 +39,7 @@ const BlogDetails = () => {
             blogsId
         }
         console.log(commentsInfo);
-        axios.post('https://blog-bloom-server.vercel.app/comments', commentsInfo)
+        axios.post('http://localhost:5000/comments', commentsInfo)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
@@ -48,7 +49,7 @@ const BlogDetails = () => {
 
     }
     useEffect(() => {
-        axios.get(`https://blog-bloom-server.vercel.app/comments/${_id}`)
+        axios.get(`http://localhost:5000/comments/${_id}`)
             .then(res => {
                 console.log(res.data);
                 setComments(res.data)

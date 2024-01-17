@@ -8,7 +8,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        merienda: "'Merienda', cursive"
+        merienda: "'Merienda', cursive",
+        libreFranklin: "Libre Franklin, sans-serif;"
       }
     },
   },

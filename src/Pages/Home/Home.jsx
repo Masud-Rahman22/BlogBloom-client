@@ -1,10 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import About from "../../MainLayout/About";
 import Banner from "../../MainLayout/Banner/Banner";
-import Blogging from "../../MainLayout/Blogging";
 import Testimonials from "../../MainLayout/Testimonials";
 import RecentBlogs from "../../MainLayout/RecentBlogs/RecentBlogs";
 import Newsletter from "../../MainLayout/Newsletter";
+import SupportSection from "../../MainLayout/SupportSection/SupportSection";
 
 const Home = () => {
     const blogs = useLoaderData();
@@ -14,7 +14,7 @@ const Home = () => {
             <RecentBlogs blogs={blogs}></RecentBlogs>
             <Newsletter></Newsletter>
             <Testimonials></Testimonials>
-            <Blogging></Blogging>
+            <SupportSection></SupportSection>
             <About></About>
         </div>
     );

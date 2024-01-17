@@ -25,7 +25,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: ()=> fetch('https://blog-bloom-server.vercel.app/blogs/sort')
+                loader: ()=> fetch('http://localhost:5000/blogs/sort')
             },
             {
                 path: "/addBlog",
@@ -34,12 +34,12 @@ const router = createBrowserRouter([
             {
                 path: "/updates/:id",
                 element: <PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>,
-                loader: ({params})=> fetch(`https://blog-bloom-server.vercel.app/updates/${params.id}`)
+                loader: ({params})=> fetch(`http://localhost:5000/updates/${params.id}`)
             },
             {
                 path: "/allBlogs",
                 element: <AllBlogs></AllBlogs>,
-                loader: ()=> fetch('https://blog-bloom-server.vercel.app/blogs')
+                loader: ()=> fetch('http://localhost:5000/blogs')
             },
             {
                 path: "/featuredBlogs",
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
             {
                 path: '/blogDetails/:id',
                 element: <PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
-                // loader: ({params})=> fetch(`https://blog-bloom-server.vercel.app/blogDetails/${params.id}`)
+                // loader: ({params})=> fetch(`http://localhost:5000/blogDetails/${params.id}`)
             },
             {
                 path: '/wishlistBlogDetails/:id',

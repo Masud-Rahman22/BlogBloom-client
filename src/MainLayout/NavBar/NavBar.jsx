@@ -75,7 +75,7 @@ const NavBar = () => {
             .catch()
     }
     return (
-        <Navbar fluid rounded>
+        <Navbar fluid rounded >
             <Navbar.Brand href="https://flowbite-react.com">
                 <img className="w-[110px] h-[110px] -mt-5" src={logo} alt="" />
             </Navbar.Brand>
